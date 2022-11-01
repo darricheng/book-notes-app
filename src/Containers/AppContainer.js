@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../Components/Home";
-import NotesLibrary from "../Components/NotesLibrary";
-import SearchBooks from "../Components/SearchBooks";
+import Home from "../Pages/Home";
+import NotesLibrary from "../Pages/NotesLibrary";
+import SearchBooks from "../Pages/SearchBooks";
 import BooksSidebar from "../Layouts/SidebarLayout";
 
 export default function AppContainer() {
