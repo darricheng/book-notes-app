@@ -6,8 +6,12 @@ module.exports = {
       spacing: {
         18: "4.5rem",
       },
+      minWidth: {
+        256: "256px",
+      },
       minHeight: {
         app: "calc(100vh - 4.5rem)",
+        216: "216px",
       },
     },
   },
