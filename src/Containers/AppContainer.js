@@ -5,6 +5,7 @@ import SearchBooks from "../Pages/SearchBooks";
 import BooksSidebar from "../Layouts/SidebarLayout";
 import { useState } from "react";
 
+// Open Library Search API: https://openlibrary.org/dev/docs/api/search
 const API_URL = "http://openlibrary.org/search.json?q=";
 
 export default function AppContainer() {
