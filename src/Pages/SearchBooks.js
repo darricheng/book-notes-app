@@ -5,7 +5,7 @@ export default function SearchBooks() {
   return (
     <>
       <SearchBar />
-      <div className="search-results-container mt-12 flex flex-row flex-wrap justify-between gap-y-12">
+      <div className="search-results-container mt-12 flex flex-row flex-wrap justify-evenly gap-16">
         <BookCard />
         <BookCard />
         <BookCard />
