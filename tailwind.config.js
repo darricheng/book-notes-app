@@ -16,6 +16,9 @@ module.exports = {
         app: "calc(100vh - 4.5rem)",
         216: "216px",
       },
+      maxHeight: {
+        app: "calc(100vh - 4.5rem)",
+      },
     },
   },
   plugins: [],
