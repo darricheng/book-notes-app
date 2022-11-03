@@ -25,7 +25,6 @@ export default function AppContainer() {
   const submitSearch = (e) => {
     e.preventDefault();
     const trimmed = searchText.trim();
-    console.log("trimmed", trimmed);
     const query = trimmed
       .split("")
       // Replace spaces with "+" (See API documentation: https://openlibrary.org/dev/docs/api/search)
