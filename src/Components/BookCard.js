@@ -1,8 +1,9 @@
-export default function BookCard({ book, index }) {
+export default function BookCard({ book, index, cardClick }) {
   return (
     <div
       key={index}
       className="flex flex-col justify-between items-center hover:cursor-pointer p-6 min-w-256 max-w-256 min-h-216 bg-white  rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      onClick={() => cardClick("a book " + index)}
     >
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {book.title}
