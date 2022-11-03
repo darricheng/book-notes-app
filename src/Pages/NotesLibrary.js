@@ -1,7 +1,7 @@
 export default function NotesLibrary() {
   return (
     <>
-      <h1>here's the library!</h1>
+      <h1>Select a book from the sidebar to begin</h1>
     </>
   );
 }
