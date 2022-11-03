@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       spacing: {
         18: "4.5rem",
+        "9/10": "90%",
       },
       minWidth: {
         256: "256px",
