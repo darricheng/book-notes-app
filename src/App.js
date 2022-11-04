@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <AppContainer />
+      <div className="app-container mt-18 min-h-app bg-slate-300">
+        <AppContainer />
+      </div>
     </div>
   );
 }
