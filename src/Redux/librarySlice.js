@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: [],
+  value: {},
 };
 
 export const librarySlice = createSlice({
@@ -9,7 +9,15 @@ export const librarySlice = createSlice({
   initialState,
   reducers: {
     addToCollection: (state, action) => {
-      state.value.push(action.payload);
+      // state.value.push(action.payload);
+      // isbn[0] to access only the first isbn value, as API returns an array of isbn values
+      // const isbn = action.payload.isbn[0];
+      return {
+        value: {
+          ...state.value,
+          [action.payload.isbn[0]]: action.payload.book,
+        },
+      };
     },
   },
 });

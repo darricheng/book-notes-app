@@ -4,8 +4,11 @@ import SidebarCard from "../Components/SidebarCard";
 
 export default function SidebarLayout() {
   const lib = useSelector((state) => state.library.value);
-  const collection = lib.map((book, i) => {
-    return <SidebarCard title={book.title} index={i} />;
+  console.log(lib);
+  const collection = Object.values(lib).map((book, i) => {
+    return (
+      <SidebarCard title={book.title} index={i} isbn={Object.values(lib)[i]} />
+    );
   });
 
   return (
