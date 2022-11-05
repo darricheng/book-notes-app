@@ -1,8 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// value stores key:value pairs, where the key is the book's isbn,
+// and the values are the book's details (title, author, notes)
 const initialState = {
   value: {},
 };
+
+/**
+ * See SearchBooks.js for the class definition
+class LibraryBook {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+    this.notes = [];
+  }
+}
+*/
 
 export const librarySlice = createSlice({
   name: "library",
@@ -19,9 +32,21 @@ export const librarySlice = createSlice({
         },
       };
     },
+    saveNotes: (state, action) => {
+      return {
+        ...state,
+        value: {
+          ...state.value,
+          [action.payload.isbn]: {
+            ...state.value[action.payload.isbn],
+            notes: action.payload.notes,
+          },
+        },
+      };
+    },
   },
 });
 
-export const { addToCollection } = librarySlice.actions;
+export const { addToCollection, saveNotes } = librarySlice.actions;
 
 export default librarySlice.reducer;

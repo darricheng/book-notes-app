@@ -4,10 +4,9 @@ import SidebarCard from "../Components/SidebarCard";
 
 export default function SidebarLayout() {
   const lib = useSelector((state) => state.library.value);
-  console.log(lib);
   const collection = Object.values(lib).map((book, i) => {
     return (
-      <SidebarCard title={book.title} index={i} isbn={Object.values(lib)[i]} />
+      <SidebarCard title={book.title} index={i} isbn={Object.keys(lib)[i]} />
     );
   });
 
@@ -18,7 +17,7 @@ export default function SidebarLayout() {
         className="w-64 fixed left-0 top-18 h-screen lg:max-h-app overflow-y-auto py-4 px-3 bg-gray-50 dark:bg-gray-800"
         aria-label="Sidebar"
       >
-        <h2 className="pb-3 text-xl font-bold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+        <h2 className="pb-3 text-xl font-bold text-gray-900 dark:text-white">
           Your Books
         </h2>
         <ul className="space-y-2">
