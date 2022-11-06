@@ -65,13 +65,13 @@ export default function BookContainer() {
       <h1 className="text-4xl font-bold">{book.title}</h1>
       <h2 className="text-lg font-semibold">{book.author}</h2>
       <button
-        className="sticky top-32 left-9/10 -translate-y-24 z-50 px-6 py-1 bg-blue-500 hover:bg-blue-400 rounded-full text-white text-xl font-semibold"
+        className="sticky top-48 left-9/10 -translate-y-24 z-50 px-6 py-1 bg-blue-500 hover:bg-blue-400 rounded-full text-white text-xl font-semibold"
         onClick={() => save()}
       >
         Save Notes
       </button>
       <button
-        className="sticky top-32 left-9/10 -translate-y-8 z-50 px-6 py-1 border-2 border-blue-500 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 text-xl font-semibold"
+        className="sticky top-48 left-9/10 -translate-y-8 z-50 px-6 py-1 border-2 border-blue-500 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 text-xl font-semibold"
         onClick={() => setNotes(() => [...notes, new NewNote()])}
       >
         Add New Note
