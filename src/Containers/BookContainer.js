@@ -11,7 +11,6 @@ class NewNote {
   }
 }
 
-// TODO: Simplify state management, make redux the SSOT for the text in the textareas
 // TODO: Change save button to save notes in redux to localStorage or server
 
 export default function BookContainer() {
