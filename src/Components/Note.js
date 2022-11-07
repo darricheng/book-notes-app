@@ -1,27 +1,31 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateNotes } from "../Redux/librarySlice";
 
-export default function Note({ highlight, userNotes, index, updateUserNote }) {
-  const defaultNoteObj = {
-    highlight: highlight,
-    note: userNotes,
-  };
-  // const [noteObj, setNoteObj] = useState(defaultNoteObj);
+export default function Note({ index, isbn }) {
+  // Access the redux state
+  const lib = useSelector((state) => state.library.value);
+  const dispatch = useDispatch();
 
-  const onNotesChange = (data, type) => {
-    // setNoteObj((prev) => {
-    //   return {
-    //     ...prev,
-    //     highlight: data,
-    //   };
-    // });
+  const highlightAndNote = lib[isbn].notes[index];
 
+  const updateNote = (data) => {
     const payload = {
+      isbn: isbn,
+      type: "note",
+      value: data,
       index: index,
-      type: type,
-      payload: data,
     };
+    dispatch(updateNotes(payload));
+  };
 
-    updateUserNote(payload);
+  const updateHighlight = (data) => {
+    const payload = {
+      isbn: isbn,
+      type: "highlight",
+      value: data,
+      index: index,
+    };
+    dispatch(updateNotes(payload));
   };
 
   return (
@@ -39,7 +43,7 @@ export default function Note({ highlight, userNotes, index, updateUserNote }) {
           rows="4"
           className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your book highlight..."
-          onChange={(e) => onNotesChange(e.target.value, "highlight")}
+          onChange={(e) => updateHighlight(e.target.value)}
         ></textarea>
       </div>
       <div className="note">
@@ -54,7 +58,7 @@ export default function Note({ highlight, userNotes, index, updateUserNote }) {
           rows="4"
           className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your note..."
-          onChange={(e) => onNotesChange(e.target.value, "note")}
+          onChange={(e) => updateNote(e.target.value)}
         ></textarea>
       </div>
     </div>

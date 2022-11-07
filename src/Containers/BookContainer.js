@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { saveNotes } from "../Redux/librarySlice";
+import { addNote } from "../Redux/librarySlice";
 import Note from "../Components/Note";
-import { useEffect, useState } from "react";
+// import { useState } from "react";
 
 class NewNote {
   constructor() {
@@ -16,49 +16,29 @@ class NewNote {
 
 export default function BookContainer() {
   // Get the isbn from the url
-  // const [isbn, setIsbn] = useState(null);
-  // setIsbn(params);
   const params = useParams();
   const isbn = params.isbn;
 
-  // Access the redux state
-  const lib = useSelector((state) => state.library.value);
   const dispatch = useDispatch();
-
+  const lib = useSelector((state) => state.library.value);
   const book = lib[isbn];
-  console.log("book", book);
-  console.log("book notes", book.notes);
-  const [notes, setNotes] = useState(book.notes);
-  console.log("notes", notes);
-
-  const updateUserNote = (data) => {
-    setNotes((prev) => {
-      prev[data.index][data.type] = data.payload;
-      return prev;
-    });
-  };
+  const notes = book.notes;
+  console.log(notes);
 
   const save = () => {
-    const payload = {
-      notes: notes,
-      isbn: isbn,
-    };
-    dispatch(saveNotes(payload));
-    console.log(lib);
+    // const payload = {
+    //   notes: notes,
+    //   isbn: isbn,
+    // };
+    // dispatch(saveNotes(payload));
+    console.log("saved");
   };
 
-  // if (notes.length === 0) setNotes(() => [...notes, new NewNote()]);
-
   const noteSections = notes.map((note, i) => {
-    return (
-      <Note
-        highlight={note.highlight}
-        userNotes={note.note}
-        index={i}
-        updateUserNote={updateUserNote}
-      />
-    );
+    return <Note index={i} isbn={isbn} />;
   });
+
+  // TODO: If it's a new book without notes, show one empty <Note /> by default
 
   return (
     <div className="notes-lib relative">
@@ -72,7 +52,7 @@ export default function BookContainer() {
       </button>
       <button
         className="sticky top-48 left-9/10 -translate-y-8 z-50 px-6 py-1 border-2 border-blue-500 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 text-xl font-semibold"
-        onClick={() => setNotes(() => [...notes, new NewNote()])}
+        onClick={() => dispatch(addNote({ isbn: isbn }))}
       >
         Add New Note
       </button>

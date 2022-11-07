@@ -8,6 +8,7 @@ const initialState = {
 
 /**
  * See SearchBooks.js for the class definition
+ * ! Ideally, the class should be defined here
 class LibraryBook {
   constructor(title, author) {
     this.title = title;
@@ -22,24 +23,52 @@ export const librarySlice = createSlice({
   initialState,
   reducers: {
     addToCollection: (state, action) => {
-      // state.value.push(action.payload);
       // isbn[0] to access only the first isbn value, as API returns an array of isbn values
-      // const isbn = action.payload.isbn[0];
       return {
+        ...state,
         value: {
           ...state.value,
           [action.payload.isbn[0]]: action.payload.book,
         },
       };
     },
-    saveNotes: (state, action) => {
+    updateNotes: (state, action) => {
+      console.log(action);
+      const isbn = action.payload.isbn;
+      const type = action.payload.type;
+      const value = action.payload.value;
+      const index = action.payload.index;
+      const resArr = state.value[isbn].notes.map((el, i) => {
+        if (i === index) {
+          return {
+            ...el,
+            [type]: value,
+          };
+        } else {
+          return el;
+        }
+      });
       return {
         ...state,
         value: {
           ...state.value,
-          [action.payload.isbn]: {
-            ...state.value[action.payload.isbn],
-            notes: action.payload.notes,
+          [isbn]: {
+            ...state.value[isbn],
+            notes: resArr,
+          },
+        },
+      };
+    },
+    addNote: (state, action) => {
+      const isbn = action.payload.isbn;
+      console.log(state);
+      return {
+        ...state,
+        value: {
+          ...state.value,
+          [isbn]: {
+            ...state.value[isbn],
+            notes: [...state.value[isbn].notes, { highlight: "", note: "" }],
           },
         },
       };
@@ -47,6 +76,6 @@ export const librarySlice = createSlice({
   },
 });
 
-export const { addToCollection, saveNotes } = librarySlice.actions;
+export const { addToCollection, updateNotes, addNote } = librarySlice.actions;
 
 export default librarySlice.reducer;
