@@ -1,17 +1,20 @@
 import { useState } from "react";
 
 export default function SearchBar({ setSearchText, submitSearch }) {
-  const [searchType, setSearchType] = useState("title");
+  const [queryType, setQueryType] = useState("title");
 
   const handleChange = (e) => {
-    setSearchType(e.target.value);
+    setQueryType(e.target.value);
   };
 
   return (
     <div className="block">
       <form
         className="inline-block w-128"
-        onSubmit={(e) => submitSearch(e, searchType)}
+        onSubmit={(e) => {
+          e.preventDefault();
+          submitSearch(queryType);
+        }}
       >
         <div className="relative">
           <label htmlFor="search-type"></label>

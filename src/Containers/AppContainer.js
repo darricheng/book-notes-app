@@ -7,7 +7,7 @@ import { useState } from "react";
 import NotesContainer from "./BookContainer";
 
 // Open Library Search API: https://openlibrary.org/dev/docs/api/search
-const API_URL = "http://openlibrary.org/search.json?language=eng&q=";
+const API_URL = "http://openlibrary.org/search.json?";
 
 export default function AppContainer() {
   const [searchText, setSearchText] = useState("");
@@ -15,7 +15,7 @@ export default function AppContainer() {
 
   const makeApiCall = async (query) => {
     try {
-      const response = await fetch(API_URL + query);
+      const response = await fetch(query);
       const resObj = await response.json();
       setSearchResults(resObj.docs);
     } catch {
@@ -23,14 +23,16 @@ export default function AppContainer() {
     }
   };
 
-  const submitSearch = (e, searchType) => {
-    e.preventDefault();
+  const submitSearch = (queryType) => {
     const trimmed = searchText.trim();
-    const query = trimmed
+    const queryText = trimmed
       .split("")
       // Replace spaces with "+" (See API documentation: https://openlibrary.org/dev/docs/api/search)
       .map((l) => (l === " " ? "+" : l))
       .join("");
+
+    const lang = "eng";
+    const query = `${API_URL}language=${lang}&${queryType}=${queryText}`;
     makeApiCall(query);
   };
   return (
