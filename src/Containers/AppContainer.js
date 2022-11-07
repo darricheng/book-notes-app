@@ -23,7 +23,7 @@ export default function AppContainer() {
     }
   };
 
-  const submitSearch = (e) => {
+  const submitSearch = (e, searchType) => {
     e.preventDefault();
     const trimmed = searchText.trim();
     const query = trimmed
