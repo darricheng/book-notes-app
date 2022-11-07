@@ -1,19 +1,22 @@
-export default function BookInfoPopover({ olid, pubYr }) {
-  const coverUrl = `https://covers.openlibrary.org/b/olid/${olid}-M.jpg`;
-  const openLibUrl = `https://openlibrary.org/books/${olid}`;
+import { openLibCoverUrlGen, openLibBookUrlGen } from "../Resources/commonUrls";
+
+export default function BookInfoPopover({ olid, pubYr, subtitle }) {
+  const coverUrl = openLibCoverUrlGen(olid, "M");
+  const openLibUrl = openLibBookUrlGen(olid);
 
   return (
     <div
       data-popover
       id="popover-description"
       role="tooltip"
-      className="absolute flex flex-col justify-between items-center -right-2 z-50 w-64 text-sm font-light text-gray-500 bg-gray-50 rounded-lg border border-gray-200 shadow-sm transition-opacity duration-300 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400"
+      className="absolute -right-2 z-50 w-64 text-sm font-light text-gray-500 bg-gray-50 rounded-lg border border-gray-200 shadow-sm transition-opacity duration-300 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400"
     >
-      <div className="p-3">
+      <div className="p-3 flex flex-col justify-between items-center">
         <img src={coverUrl}></img>
         <h3 className="font-semibold text-gray-900 dark:text-white">
-          First Published Year: {pubYr}
+          {subtitle}
         </h3>
+        <p>First Published Year: {pubYr}</p>
         <a
           href={openLibUrl}
           target="_blank"
@@ -35,7 +38,6 @@ export default function BookInfoPopover({ olid, pubYr }) {
           </svg>
         </a>
       </div>
-      <div data-popper-arrow></div>
     </div>
   );
 }
