@@ -17,7 +17,8 @@ export default function AppContainer() {
     try {
       const response = await fetch(query);
       const resObj = await response.json();
-      setSearchResults(resObj.docs);
+      // Just show the top 20 results
+      setSearchResults(resObj.docs.slice(0, 20));
     } catch {
       console.log("ERROR making api call");
     }
