@@ -34,7 +34,7 @@ export default function BookContainer() {
   };
 
   const noteSections = notes.map((note, i) => {
-    return <Note index={i} isbn={isbn} />;
+    return <Note index={i} isbn={isbn} note={note} />;
   });
 
   // TODO: If it's a new book without notes, show one empty <Note /> by default
@@ -55,7 +55,7 @@ export default function BookContainer() {
       >
         Add New Note
       </button>
-      <div>{noteSections}</div>
+      <div id="note-sections">{noteSections}</div>
     </div>
   );
 }
