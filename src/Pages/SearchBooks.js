@@ -2,16 +2,6 @@ import BookCard from "../Components/BookCard";
 import SearchBar from "../Components/SearchBar";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCollection } from "../Redux/librarySlice";
-import { useEffect } from "react";
-
-class LibraryBook {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-    // this.isbn = isbn;
-    this.notes = [];
-  }
-}
 
 export default function SearchBooks({
   // destructured props
@@ -19,7 +9,6 @@ export default function SearchBooks({
   submitSearch,
   searchResults,
 }) {
-  const lib = useSelector((state) => state.library.value);
   const dispatch = useDispatch();
 
   const cardClick = (data) => {
