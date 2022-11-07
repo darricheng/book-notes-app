@@ -6,7 +6,12 @@ export default function SidebarLayout() {
   const lib = useSelector((state) => state.library.value);
   const collection = Object.values(lib).map((book, i) => {
     return (
-      <SidebarCard title={book.title} index={i} isbn={Object.keys(lib)[i]} />
+      <SidebarCard
+        title={book.title}
+        index={i}
+        isbn={Object.keys(lib)[i]}
+        olid={book.olid}
+      />
     );
   });
 
