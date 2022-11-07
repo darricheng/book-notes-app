@@ -5,10 +5,10 @@ import { addToCollection } from "../Redux/librarySlice";
 import { useEffect } from "react";
 
 class LibraryBook {
-  constructor(title, author, isbn) {
+  constructor(title, author) {
     this.title = title;
     this.author = author;
-    this.isbn = isbn;
+    // this.isbn = isbn;
     this.notes = [];
   }
 }
@@ -32,10 +32,11 @@ export default function SearchBooks({
 		*/
     const { ...book } = new LibraryBook(
       data.title,
-      data.author_name,
-      data.isbn
+      data.author_name
+      // data.isbn
     );
-    dispatch(addToCollection(book));
+    const payload = { book: book, isbn: data.isbn };
+    dispatch(addToCollection(payload));
   };
 
   useEffect(() => {

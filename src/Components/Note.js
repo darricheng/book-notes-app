@@ -1,32 +1,36 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateNotes } from "../Redux/librarySlice";
 
-export default function Note() {
-  const defaultNoteObj = {
-    highlight: "",
-    note: "",
+export default function Note({ index, isbn }) {
+  // Access the redux state
+  const lib = useSelector((state) => state.library.value);
+  const dispatch = useDispatch();
+
+  const highlightAndNote = lib[isbn].notes[index];
+
+  const updateNote = (data) => {
+    const payload = {
+      isbn: isbn,
+      type: "note",
+      value: data,
+      index: index,
+    };
+    dispatch(updateNotes(payload));
   };
-  const [noteObj, setNoteObj] = useState(defaultNoteObj);
 
   const updateHighlight = (data) => {
-    setNoteObj((prev) => {
-      return {
-        ...prev,
-        highlight: data,
-      };
-    });
-  };
-  const updateNote = (data) => {
-    setNoteObj((prev) => {
-      return {
-        ...prev,
-        note: data,
-      };
-    });
+    const payload = {
+      isbn: isbn,
+      type: "highlight",
+      value: data,
+      index: index,
+    };
+    dispatch(updateNotes(payload));
   };
 
   return (
     <div className="note-wrapper relative mb-8 pb-8 pt-2 px-8 border border-solid border-gray-700 rounded-3xl">
-      <h2>Note {/* index */}1</h2>
+      <h2>Note {index}</h2>
       <div className="highlight pb-2">
         <label
           htmlFor="highlight"
