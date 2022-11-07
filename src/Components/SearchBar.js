@@ -40,7 +40,7 @@ export default function SearchBar({ setSearchText, submitSearch }) {
             <select
               name="search-type"
               id="search-type"
-              className="py-4 pl-5 pr-6 text-sm text-gray-900 bg-gray-200 rounded-l-lg border border-gray-300"
+              className="py-4 pl-5 pr-6 text-sm font-semibold text-gray-900 bg-gray-200 rounded-l-lg border border-gray-300 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => handleChange(e)}
             >
               <option value={"title"}>Title</option>
