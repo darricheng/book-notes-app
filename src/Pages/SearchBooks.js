@@ -16,9 +16,12 @@ export default function SearchBooks({
     dispatch(addToCollection(payload));
   };
 
-  const bookCards = searchResults.map((book, i) => (
-    <BookCard book={book} index={i} cardClick={cardClick} />
-  ));
+  const bookCards = searchResults.map((book, i) => {
+    // Show only books that have the following details in the returned object
+    if (book.title && book.author_name && book.cover_edition_key) {
+      return <BookCard book={book} index={i} cardClick={cardClick} />;
+    } else return;
+  });
 
   return (
     <>
