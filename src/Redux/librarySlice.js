@@ -7,9 +7,10 @@ const initialState = {
 };
 
 class LibraryBook {
-  constructor(title, author) {
+  constructor(title, author, olid) {
     this.title = title;
     this.author = author;
+    this.olid = olid;
     this.notes = [];
   }
 }
@@ -30,7 +31,8 @@ export const librarySlice = createSlice({
 			*/
       const { ...book } = new LibraryBook(
         bookApiObj.title,
-        bookApiObj.author_name
+        bookApiObj.author_name,
+        bookApiObj.cover_edition_key
       );
 
       // isbn[0] to access only the first isbn value, as API returns an array of isbn values
