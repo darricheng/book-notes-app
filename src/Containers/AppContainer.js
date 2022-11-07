@@ -7,7 +7,7 @@ import { useState } from "react";
 import NotesContainer from "./BookContainer";
 
 // Open Library Search API: https://openlibrary.org/dev/docs/api/search
-const API_URL = "http://openlibrary.org/search.json?";
+const API_URL = "https://openlibrary.org/search.json?";
 
 export default function AppContainer() {
   const [searchText, setSearchText] = useState("");
