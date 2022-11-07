@@ -4,12 +4,15 @@ import NotesLibrary from "../Pages/NotesLibrary";
 import SearchBooks from "../Pages/SearchBooks";
 import BooksSidebar from "../Layouts/SidebarLayout";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import BookContainer from "./BookContainer";
 
 // Open Library Search API: https://openlibrary.org/dev/docs/api/search
 const API_URL = "https://openlibrary.org/search.json?";
 
 export default function AppContainer() {
+  const navigate = useNavigate();
+
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -24,7 +27,10 @@ export default function AppContainer() {
     }
   };
 
-  const submitSearch = (queryType) => {
+  const submitSearch = (e, queryType) => {
+    // Navigate to search page if search is done on home page
+    if (e.target.closest("#home")) navigate("/search");
+
     const trimmed = searchText.trim();
     const queryText = trimmed
       .split("")
@@ -38,7 +44,16 @@ export default function AppContainer() {
   };
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route
+        path="/"
+        element={
+          <Home
+            setSearchText={setSearchText}
+            submitSearch={submitSearch}
+            searchResults={searchResults}
+          />
+        }
+      />
       <Route element={<BooksSidebar />}>
         <Route
           path="search"
