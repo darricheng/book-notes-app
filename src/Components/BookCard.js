@@ -16,7 +16,6 @@ export default function BookCard({ book }) {
     const payload = { book: book };
     // Check if book is already present in the collection
     if (lib[book.isbn[0]]) {
-      console.log("book already present");
       setIsAlertingDup(true);
       setTimeout(() => setIsAlertingDup(false), 2000);
     } else {

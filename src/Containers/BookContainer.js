@@ -14,7 +14,6 @@ export default function BookContainer() {
   const lib = useSelector((state) => state.library.value);
   const book = lib[isbn];
   const notes = book.notes;
-  console.log(notes);
 
   const handleDeleteBook = () => {
     const payload = { isbn: isbn };
@@ -32,7 +31,12 @@ export default function BookContainer() {
   return (
     <div className="notes-lib relative">
       <h1 className="text-4xl font-bold">{book.title}</h1>
-      <h2 className="text-lg font-semibold">{book.author}</h2>
+      <h2 className="text-lg font-semibold">
+        {book.author.reduce((prev, curr, index) => {
+          if (index === 0) return prev + curr;
+          else return prev + ", " + curr;
+        }, "")}
+      </h2>
       <button
         type="button"
         className="absolute top-2 left-8 text-gray-800 hover:bg-red-400 border-2 border-red-700 hover:border-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900"

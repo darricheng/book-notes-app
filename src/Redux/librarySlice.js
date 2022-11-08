@@ -52,7 +52,6 @@ export const librarySlice = createSlice({
       };
     },
     updateNotes: (state, action) => {
-      console.log(action);
       const isbn = action.payload.isbn;
       const type = action.payload.type;
       const value = action.payload.value;
@@ -81,7 +80,6 @@ export const librarySlice = createSlice({
     addNote: (state, action) => {
       const isbn = action.payload.isbn;
       const { ...newNote } = new Note();
-      console.log(state);
       return {
         ...state,
         value: {

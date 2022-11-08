@@ -54,7 +54,7 @@ export default function SidebarLayout() {
           </button>
           {isSaving && (
             <AlertLayout coords={"top-1 right-48"}>
-              <p>Notes Saved</p>
+              <p>Collection Saved</p>
             </AlertLayout>
           )}
         </div>
