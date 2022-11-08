@@ -15,6 +15,13 @@ class LibraryBook {
   }
 }
 
+class Note {
+  constructor() {
+    this.highlight = "";
+    this.note = "";
+  }
+}
+
 export const librarySlice = createSlice({
   name: "library",
   initialState,
@@ -78,6 +85,7 @@ export const librarySlice = createSlice({
     },
     addNote: (state, action) => {
       const isbn = action.payload.isbn;
+      const { ...newNote } = new Note();
       console.log(state);
       return {
         ...state,
@@ -85,7 +93,7 @@ export const librarySlice = createSlice({
           ...state.value,
           [isbn]: {
             ...state.value[isbn],
-            notes: [...state.value[isbn].notes, { highlight: "", note: "" }],
+            notes: [...state.value[isbn].notes, newNote],
           },
         },
       };

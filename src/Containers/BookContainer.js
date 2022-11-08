@@ -3,14 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { addNote } from "../Redux/librarySlice";
 import Note from "../Components/Note";
 import { saveState } from "../localStorage";
-// import { useState } from "react";
-
-class NewNote {
-  constructor() {
-    this.highlight = "";
-    this.note = "";
-  }
-}
 
 // TODO: Change save button to save notes in redux to localStorage or server
 
