@@ -26,8 +26,6 @@ export default function BookContainer() {
     return <Note key={i} index={i} isbn={isbn} />;
   });
 
-  // TODO: If it's a new book without notes, show one empty <Note /> by default
-
   return (
     <div className="notes-lib relative">
       <h1 className="text-4xl font-bold">{book.title}</h1>
