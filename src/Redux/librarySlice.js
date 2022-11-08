@@ -28,6 +28,7 @@ export const librarySlice = createSlice({
   reducers: {
     addToCollection: (state, action) => {
       const bookApiObj = action.payload.book;
+      // isbn[0] to access only the first isbn value, as API returns an array of isbn values
       const isbn = bookApiObj.isbn[0];
       /* Use destructuring to convert class Object to a plain JS object
 			Source: https://stackoverflow.com/questions/34699529/convert-javascript-class-instance-to-plain-object-preserving-methods
@@ -36,18 +37,20 @@ export const librarySlice = createSlice({
 			- Payload passed to redux needs to be serializable: https://redux.js.org/faq/actions#why-should-type-be-a-string-or-at-least-serializable-why-should-my-action-types-be-constants
 			- Only plain objects are serializable: https://developer.mozilla.org/en-US/docs/Glossary/Serializable_object#supported_objects
 			*/
-      const { ...book } = new LibraryBook(
+      const { ...newBook } = new LibraryBook(
         bookApiObj.title,
         bookApiObj.author_name,
         bookApiObj.cover_edition_key
       );
+      // Init new books with one empty note
+      const { ...newNote } = new Note();
+      newBook.notes.push(newNote);
 
-      // isbn[0] to access only the first isbn value, as API returns an array of isbn values
       return {
         ...state,
         value: {
           ...state.value,
-          [bookApiObj.isbn[0]]: book,
+          [isbn]: newBook,
         },
       };
     },
