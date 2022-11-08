@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addNote } from "../Redux/librarySlice";
 import Note from "../Components/Note";
+import { saveState } from "../localStorage";
 // import { useState } from "react";
 
 class NewNote {
@@ -25,11 +26,7 @@ export default function BookContainer() {
   console.log(notes);
 
   const save = () => {
-    // const payload = {
-    //   notes: notes,
-    //   isbn: isbn,
-    // };
-    // dispatch(saveNotes(payload));
+    saveState(lib);
     console.log("saved");
   };
 
