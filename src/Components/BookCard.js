@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BookInfoPopover from "./BookInfoPopover";
 
-export default function BookCard({ book, index, cardClick }) {
+export default function BookCard({ book, cardClick }) {
   // useState to determine if mouse is hovering over info element
   // source: https://bobbyhadz.com/blog/react-show-element-on-hover
   const [isHovering, setIsHovering] = useState(false);
@@ -13,10 +13,7 @@ export default function BookCard({ book, index, cardClick }) {
   };
 
   return (
-    <div
-      className="flex flex-col justify-between items-center p-6 min-w-256 max-w-256 min-h-216 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-      key={index}
-    >
+    <div className="flex flex-col justify-between items-center p-6 min-w-256 max-w-256 min-h-216 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
       <div className="relative">
         <div
           className="info-icon absolute -top-5 -left-30 cursor-help"

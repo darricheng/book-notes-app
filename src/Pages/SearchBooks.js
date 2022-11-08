@@ -19,7 +19,7 @@ export default function SearchBooks({
   const bookCards = searchResults.map((book, i) => {
     // Show only books that have the following details in the returned object
     if (book.title && book.author_name && book.cover_edition_key) {
-      return <BookCard book={book} index={i} cardClick={cardClick} />;
+      return <BookCard book={book} key={i} cardClick={cardClick} />;
     } else return;
   });
 

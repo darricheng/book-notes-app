@@ -23,7 +23,7 @@ export default function BookContainer() {
   };
 
   const noteSections = notes.map((note, i) => {
-    return <Note index={i} isbn={isbn} note={note} />;
+    return <Note key={i} index={i} isbn={isbn} />;
   });
 
   // TODO: If it's a new book without notes, show one empty <Note /> by default
