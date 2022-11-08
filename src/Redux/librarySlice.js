@@ -28,12 +28,8 @@ export const librarySlice = createSlice({
   reducers: {
     addToCollection: (state, action) => {
       const bookApiObj = action.payload.book;
+      // isbn[0] to access only the first isbn value, as API returns an array of isbn values
       const isbn = bookApiObj.isbn[0];
-      if (state.value[isbn]) {
-        console.log("book already present");
-        return { ...state };
-      }
-      console.log(bookApiObj);
       /* Use destructuring to convert class Object to a plain JS object
 			Source: https://stackoverflow.com/questions/34699529/convert-javascript-class-instance-to-plain-object-preserving-methods
 			
@@ -41,23 +37,24 @@ export const librarySlice = createSlice({
 			- Payload passed to redux needs to be serializable: https://redux.js.org/faq/actions#why-should-type-be-a-string-or-at-least-serializable-why-should-my-action-types-be-constants
 			- Only plain objects are serializable: https://developer.mozilla.org/en-US/docs/Glossary/Serializable_object#supported_objects
 			*/
-      const { ...book } = new LibraryBook(
+      const { ...newBook } = new LibraryBook(
         bookApiObj.title,
         bookApiObj.author_name,
         bookApiObj.cover_edition_key
       );
+      // Init new books with one empty note
+      const { ...newNote } = new Note();
+      newBook.notes.push(newNote);
 
-      // isbn[0] to access only the first isbn value, as API returns an array of isbn values
       return {
         ...state,
         value: {
           ...state.value,
-          [bookApiObj.isbn[0]]: book,
+          [isbn]: newBook,
         },
       };
     },
     updateNotes: (state, action) => {
-      console.log(action);
       const isbn = action.payload.isbn;
       const type = action.payload.type;
       const value = action.payload.value;
@@ -86,7 +83,6 @@ export const librarySlice = createSlice({
     addNote: (state, action) => {
       const isbn = action.payload.isbn;
       const { ...newNote } = new Note();
-      console.log(state);
       return {
         ...state,
         value: {
@@ -98,9 +94,41 @@ export const librarySlice = createSlice({
         },
       };
     },
+    deleteNote: (state, action) => {
+      const isbn = action.payload.isbn;
+      const index = action.payload.index;
+      const filteredNotes = state.value[isbn].notes.filter(
+        (note, i) => i !== index
+      );
+      return {
+        ...state,
+        value: {
+          ...state.value,
+          [isbn]: {
+            ...state.value[isbn],
+            notes: [...filteredNotes],
+          },
+        },
+      };
+    },
+    deleteLibBook: (state, action) => {
+      const isbn = action.payload.isbn;
+      const { ...tempState } = state.value;
+      delete tempState[isbn];
+      return {
+        ...state,
+        value: tempState,
+      };
+    },
   },
 });
 
-export const { addToCollection, updateNotes, addNote } = librarySlice.actions;
+export const {
+  addToCollection,
+  updateNotes,
+  addNote,
+  deleteNote,
+  deleteLibBook,
+} = librarySlice.actions;
 
 export default librarySlice.reducer;

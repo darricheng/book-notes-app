@@ -15,13 +15,16 @@ export default function AppContainer() {
 
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
 
   const makeApiCall = async (query) => {
     try {
+      setIsSearching(true);
       const response = await fetch(query);
       const resObj = await response.json();
       // Just process the top 50 results
       setSearchResults(resObj.docs.slice(0, 50));
+      setIsSearching(false);
     } catch {
       console.log("ERROR making api call");
     }
@@ -62,6 +65,7 @@ export default function AppContainer() {
               setSearchText={setSearchText}
               submitSearch={submitSearch}
               searchResults={searchResults}
+              isSearching={isSearching}
             />
           }
         />
