@@ -1,9 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
-import { updateNotes } from "../Redux/librarySlice";
+import { updateNotes, deleteNote } from "../Redux/librarySlice";
 
 export default function Note({ index, isbn }) {
   // Access the redux state
   const dispatch = useDispatch();
+
+  // Add text to the textareas on component render
+  // Source: https://reactjs.org/docs/forms.html#the-textarea-tag
+  const textValues = useSelector(
+    (state) => state.library.value[isbn].notes[index]
+  );
 
   const updateNote = (data) => {
     const payload = {
@@ -25,15 +31,24 @@ export default function Note({ index, isbn }) {
     dispatch(updateNotes(payload));
   };
 
-  // Add text to the textareas on component render
-  // Source: https://reactjs.org/docs/forms.html#the-textarea-tag
-  const textValues = useSelector(
-    (state) => state.library.value[isbn].notes[index]
-  );
+  const handleDelete = () => {
+    const payload = {
+      isbn: isbn,
+      index: index,
+    };
+    dispatch(deleteNote(payload));
+  };
 
   return (
     <div className="note-wrapper relative mb-8 pb-8 pt-2 px-8 border border-solid border-gray-700 rounded-3xl">
-      <h2>Note {index + 1}</h2>
+      <h2 className="font-semibold text-2xl my-2">Note {index + 1}</h2>
+      <button
+        type="button"
+        className="absolute top-4 left-7 focus:outline-none text-black border-2 hover:bg-gray-200 border-red-700 hover:border-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900"
+        onClick={() => handleDelete()}
+      >
+        Delete
+      </button>
       <div className="highlight pb-2">
         <label
           htmlFor="highlight"

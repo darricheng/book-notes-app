@@ -98,9 +98,27 @@ export const librarySlice = createSlice({
         },
       };
     },
+    deleteNote: (state, action) => {
+      const isbn = action.payload.isbn;
+      const index = action.payload.index;
+      const filteredNotes = state.value[isbn].notes.filter(
+        (note, i) => i !== index
+      );
+      return {
+        ...state,
+        value: {
+          ...state.value,
+          [isbn]: {
+            ...state.value[isbn],
+            notes: [...filteredNotes],
+          },
+        },
+      };
+    },
   },
 });
 
-export const { addToCollection, updateNotes, addNote } = librarySlice.actions;
+export const { addToCollection, updateNotes, addNote, deleteNote } =
+  librarySlice.actions;
 
 export default librarySlice.reducer;
