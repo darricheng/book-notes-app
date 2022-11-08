@@ -1,7 +1,31 @@
 import { useState } from "react";
 import BookInfoPopover from "./BookInfoPopover";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCollection } from "../Redux/librarySlice";
+import AlertLayout from "../Layouts/AlertLayout";
 
-export default function BookCard({ book, addBook }) {
+export default function BookCard({ book }) {
+  const dispatch = useDispatch();
+  const lib = useSelector((state) => state.library.value);
+
+  // Init state for alert indicating duplicate book present in collection
+  const [isAlertingDup, setIsAlertingDup] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
+
+  const addBook = () => {
+    const payload = { book: book };
+    // Check if book is already present in the collection
+    if (lib[book.isbn[0]]) {
+      console.log("book already present");
+      setIsAlertingDup(true);
+      setTimeout(() => setIsAlertingDup(false), 2000);
+    } else {
+      dispatch(addToCollection(payload));
+      setIsAdding(true);
+      setTimeout(() => setIsAdding(false), 2000);
+    }
+  };
+
   // useState to determine if mouse is hovering over info element
   // source: https://bobbyhadz.com/blog/react-show-element-on-hover
   const [isHovering, setIsHovering] = useState(false);
@@ -60,9 +84,21 @@ export default function BookCard({ book, addBook }) {
       </p>
       <div
         className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:cursor-pointer focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:focus:ring-blue-800"
-        onClick={() => addBook(book)}
+        onClick={() => addBook()}
       >
         Add to collection
+      </div>
+      <div className="relative">
+        {isAlertingDup && (
+          <AlertLayout coords="-top-10 left-20">
+            <p>Already added</p>
+          </AlertLayout>
+        )}
+        {isAdding && (
+          <AlertLayout coords="-top-10 left-20">
+            <p>Added to collection</p>
+          </AlertLayout>
+        )}
       </div>
     </div>
   );

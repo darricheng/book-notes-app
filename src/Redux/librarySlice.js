@@ -29,11 +29,6 @@ export const librarySlice = createSlice({
     addToCollection: (state, action) => {
       const bookApiObj = action.payload.book;
       const isbn = bookApiObj.isbn[0];
-      if (state.value[isbn]) {
-        console.log("book already present");
-        return { ...state };
-      }
-      console.log(bookApiObj);
       /* Use destructuring to convert class Object to a plain JS object
 			Source: https://stackoverflow.com/questions/34699529/convert-javascript-class-instance-to-plain-object-preserving-methods
 			

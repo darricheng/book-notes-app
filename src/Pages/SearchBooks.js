@@ -1,7 +1,5 @@
 import BookCard from "../Components/BookCard";
 import SearchBar from "../Components/SearchBar";
-import { useDispatch } from "react-redux";
-import { addToCollection } from "../Redux/librarySlice";
 
 export default function SearchBooks({
   // destructured props
@@ -9,17 +7,10 @@ export default function SearchBooks({
   submitSearch,
   searchResults,
 }) {
-  const dispatch = useDispatch();
-
-  const addBook = (data) => {
-    const payload = { book: data };
-    dispatch(addToCollection(payload));
-  };
-
   const bookCards = searchResults.map((book, i) => {
     // Show only books that have the following details in the returned object
     if (book.title && book.author_name && book.cover_edition_key) {
-      return <BookCard book={book} key={i} addBook={addBook} />;
+      return <BookCard book={book} key={i} />;
     } else return;
   });
 
