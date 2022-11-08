@@ -1,6 +1,6 @@
 import BookCard from "../Components/BookCard";
 import SearchBar from "../Components/SearchBar";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCollection } from "../Redux/librarySlice";
 
 export default function SearchBooks({

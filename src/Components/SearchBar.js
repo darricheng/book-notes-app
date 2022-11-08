@@ -13,7 +13,7 @@ export default function SearchBar({ setSearchText, submitSearch }) {
         className="inline-block w-128"
         onSubmit={(e) => {
           e.preventDefault();
-          submitSearch(queryType);
+          submitSearch(e, queryType);
         }}
       >
         <div className="relative">

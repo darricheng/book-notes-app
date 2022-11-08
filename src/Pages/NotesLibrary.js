@@ -1,14 +1,16 @@
-import { useSelector, useDispatch } from "react-redux";
-import { Outlet } from "react-router-dom";
+import { Outlet, useOutlet } from "react-router-dom";
 
 export default function NotesLibrary() {
-  // const lib = useSelector((state) => state.library.value);
-  // const dispatch = useDispatch();
-
   return (
     <div>
-      <h1 className="text-4xl font-bold">Manage your notes here</h1>
-      <Outlet />
+      {useOutlet() ? (
+        <Outlet />
+      ) : (
+        <>
+          <h1 className="text-4xl font-bold mb-4">Manage your notes here</h1>
+          <p>Select a book from the sidebar to get started</p>
+        </>
+      )}
     </div>
   );
 }
