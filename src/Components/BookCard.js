@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BookInfoPopover from "./BookInfoPopover";
 
-export default function BookCard({ book, cardClick }) {
+export default function BookCard({ book, addBook }) {
   // useState to determine if mouse is hovering over info element
   // source: https://bobbyhadz.com/blog/react-show-element-on-hover
   const [isHovering, setIsHovering] = useState(false);
@@ -60,7 +60,7 @@ export default function BookCard({ book, cardClick }) {
       </p>
       <div
         className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:cursor-pointer focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:focus:ring-blue-800"
-        onClick={() => cardClick(book)}
+        onClick={() => addBook(book)}
       >
         Add to collection
       </div>
