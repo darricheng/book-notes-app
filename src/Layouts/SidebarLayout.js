@@ -8,7 +8,7 @@ export default function SidebarLayout() {
     return (
       <SidebarCard
         title={book.title}
-        index={i}
+        key={i}
         isbn={Object.keys(lib)[i]}
         olid={book.olid}
       />

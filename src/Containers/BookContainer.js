@@ -2,14 +2,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addNote } from "../Redux/librarySlice";
 import Note from "../Components/Note";
-// import { useState } from "react";
-
-class NewNote {
-  constructor() {
-    this.highlight = "";
-    this.note = "";
-  }
-}
+import { saveState } from "../localStorage";
 
 // TODO: Change save button to save notes in redux to localStorage or server
 
@@ -25,16 +18,12 @@ export default function BookContainer() {
   console.log(notes);
 
   const save = () => {
-    // const payload = {
-    //   notes: notes,
-    //   isbn: isbn,
-    // };
-    // dispatch(saveNotes(payload));
+    saveState(lib);
     console.log("saved");
   };
 
   const noteSections = notes.map((note, i) => {
-    return <Note index={i} isbn={isbn} note={note} />;
+    return <Note key={i} index={i} isbn={isbn} />;
   });
 
   // TODO: If it's a new book without notes, show one empty <Note /> by default

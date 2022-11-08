@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { updateNotes } from "../Redux/librarySlice";
 
-export default function Note({ index, isbn, note }) {
+export default function Note({ index, isbn }) {
   // Access the redux state
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ export default function Note({ index, isbn, note }) {
 
   return (
     <div className="note-wrapper relative mb-8 pb-8 pt-2 px-8 border border-solid border-gray-700 rounded-3xl">
-      <h2>Note {index}</h2>
+      <h2>Note {index + 1}</h2>
       <div className="highlight pb-2">
         <label
           htmlFor="highlight"
