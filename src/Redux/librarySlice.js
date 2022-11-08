@@ -115,10 +115,24 @@ export const librarySlice = createSlice({
         },
       };
     },
+    deleteLibBook: (state, action) => {
+      const isbn = action.payload.isbn;
+      const { ...tempState } = state.value;
+      delete tempState[isbn];
+      return {
+        ...state,
+        value: tempState,
+      };
+    },
   },
 });
 
-export const { addToCollection, updateNotes, addNote, deleteNote } =
-  librarySlice.actions;
+export const {
+  addToCollection,
+  updateNotes,
+  addNote,
+  deleteNote,
+  deleteLibBook,
+} = librarySlice.actions;
 
 export default librarySlice.reducer;
