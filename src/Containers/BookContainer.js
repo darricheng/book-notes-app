@@ -29,7 +29,7 @@ export default function BookContainer() {
   return (
     <div className="notes-lib relative">
       <h1 className="text-4xl font-bold">{book.title}</h1>
-      <h2 className="text-lg font-semibold">
+      <h2 className="text-lg font-semibold mb-4">
         {book.author.reduce((prev, curr, index) => {
           if (index === 0) return prev + curr;
           else return prev + ", " + curr;
