@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { updateNotes, deleteNote } from "../Redux/librarySlice";
+import DeleteButton from "./DeleteButton";
 
 export default function Note({ index, isbn }) {
   // Access the redux state
@@ -39,16 +40,16 @@ export default function Note({ index, isbn }) {
     dispatch(deleteNote(payload));
   };
 
+  const deleteBtnProps = {
+    className:
+      "absolute top-4 left-7 focus:outline-none text-black border-2 hover:bg-gray-200 border-red-700 hover:border-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900",
+    onClick: handleDelete,
+  };
+
   return (
     <div className="note-wrapper relative mb-8 pb-8 pt-2 px-8 border border-solid border-gray-700 rounded-3xl">
       <h2 className="font-semibold text-2xl my-2">Note {index + 1}</h2>
-      <button
-        type="button"
-        className="absolute top-4 left-7 focus:outline-none text-black border-2 hover:bg-gray-200 border-red-700 hover:border-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900"
-        onClick={() => handleDelete()}
-      >
-        Delete Note
-      </button>
+      <DeleteButton {...deleteBtnProps}>Delete Note</DeleteButton>
       <div className="highlight pb-2">
         <label
           htmlFor="highlight"
