@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { addNote, deleteLibBook } from "../Redux/librarySlice";
 import Note from "../Components/Note";
 import { saveState } from "../localStorage";
-
-// TODO: Change save button to save notes in redux to localStorage or server
+import { useState } from "react";
+import AlertLayout from "../Layouts/AlertLayout";
 
 export default function BookContainer() {
   const navigate = useNavigate();
+
+  const [isSaving, setIsSaving] = useState(false);
 
   // Get the isbn from the url
   const params = useParams();
@@ -21,7 +23,8 @@ export default function BookContainer() {
 
   const save = () => {
     saveState(lib);
-    console.log("saved");
+    setIsSaving(true);
+    setTimeout(() => setIsSaving(false), 2000);
   };
 
   const handleDeleteBook = () => {
@@ -48,18 +51,25 @@ export default function BookContainer() {
       >
         Delete Book
       </button>
-      <button
-        className="sticky top-48 left-9/10 -translate-y-24 z-50 px-6 py-1 bg-blue-500 hover:bg-blue-400 rounded-full text-white text-xl font-semibold"
-        onClick={() => save()}
-      >
-        Save Notes
-      </button>
-      <button
-        className="sticky top-48 left-9/10 -translate-y-8 z-50 px-6 py-1 border-2 border-blue-500 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 text-xl font-semibold"
-        onClick={() => dispatch(addNote({ isbn: isbn }))}
-      >
-        Add New Note
-      </button>
+      <div className="sticky top-48 left-0 -translate-y-24 z-50">
+        <button
+          className="absolute top-0 right-0 px-6 py-1 bg-blue-500 hover:bg-blue-400 rounded-full text-white text-xl font-semibold"
+          onClick={() => save()}
+        >
+          Save Notes
+        </button>
+        <button
+          className="absolute top-12 right-0 px-6 py-1 border-2 border-blue-500 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 text-xl font-semibold"
+          onClick={() => dispatch(addNote({ isbn: isbn }))}
+        >
+          Add New Note
+        </button>
+        {isSaving && (
+          <AlertLayout coords={"top-1 right-40"}>
+            <p>Notes Saved</p>
+          </AlertLayout>
+        )}
+      </div>
       <div id="note-sections">{noteSections}</div>
     </div>
   );
