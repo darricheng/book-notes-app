@@ -6,6 +6,7 @@ export default function SearchBooks({
   setSearchText,
   submitSearch,
   searchResults,
+  isSearching,
 }) {
   const bookCards = searchResults.map((book, i) => {
     // Show only books that have the following details in the returned object
@@ -16,7 +17,11 @@ export default function SearchBooks({
 
   return (
     <>
-      <SearchBar setSearchText={setSearchText} submitSearch={submitSearch} />
+      <SearchBar
+        setSearchText={setSearchText}
+        submitSearch={submitSearch}
+        isSearching={isSearching}
+      />
       <div className="search-results-container mt-12 flex flex-row flex-wrap justify-evenly gap-16">
         {bookCards.length === 0 ? (
           <h1 className="text-4xl font-bold">Search for a book to begin</h1>
