@@ -28,11 +28,13 @@ export default function Home({
       <section className="mb-20">
         <DescCard
           img={stackOfBooks}
+          alt="a stack of self-help books"
           header="Book Notes is the little haven that your notes deserve"
           para="Focus on your reading; we'll take care of your notes"
         />
         <DescCard
           img={libraryBookshelf}
+          alt="library bookshelf full of books"
           header="Just search for books, then start adding notes"
           para="It's that simple!"
         />

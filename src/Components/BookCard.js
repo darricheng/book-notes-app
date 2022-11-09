@@ -68,6 +68,7 @@ export default function BookCard({ book }) {
               olid={book.cover_edition_key}
               pubYr={book.first_publish_year}
               subtitle={book.subtitle}
+              title={book.title}
             />
           )}
         </div>

@@ -1,6 +1,6 @@
 import { openLibCoverUrlGen, openLibBookUrlGen } from "../Resources/commonUrls";
 
-export default function BookInfoPopover({ olid, pubYr, subtitle }) {
+export default function BookInfoPopover({ olid, pubYr, subtitle, title }) {
   const coverUrl = openLibCoverUrlGen(olid, "M");
   const openLibUrl = openLibBookUrlGen(olid);
 
@@ -12,7 +12,7 @@ export default function BookInfoPopover({ olid, pubYr, subtitle }) {
       className="absolute -right-2 z-50 w-64 text-sm font-light text-gray-500 bg-gray-50 rounded-lg border border-gray-200 shadow-sm transition-opacity duration-300 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400"
     >
       <div className="p-3 flex flex-col justify-between items-center">
-        <img src={coverUrl}></img>
+        <img src={coverUrl} alt={title}></img>
         <h3 className="font-semibold text-gray-900 dark:text-white">
           {subtitle}
         </h3>
@@ -20,6 +20,7 @@ export default function BookInfoPopover({ olid, pubYr, subtitle }) {
         <a
           href={openLibUrl}
           target="_blank"
+          rel="noreferrer"
           className="flex items-center font-medium text-blue-600 dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700"
         >
           View on Open Library{" "}
