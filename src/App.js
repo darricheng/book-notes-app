@@ -14,6 +14,7 @@ function App() {
           <a
             href="https://github.com/darricheng"
             target="_blank"
+            rel="noreferrer"
             className="cursor-pointer"
           >
             <svg
@@ -32,6 +33,7 @@ function App() {
           <a
             href="https://www.linkedin.com/in/darric-heng/"
             target="_blank"
+            rel="noreferrer"
             className="cursor-pointer"
           >
             <svg

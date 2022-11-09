@@ -12,8 +12,9 @@ export default function SearchBooks({
     // Show only books that have the following details in the returned object
     if (book.title && book.author_name && book.cover_edition_key) {
       return <BookCard book={book} key={i} />;
-    } else return;
+    } else return <></>; // React fragment as map method expects a return value
   });
+  // ? Should the above method be filter instead of map?
 
   return (
     <>
