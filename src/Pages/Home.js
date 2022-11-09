@@ -29,11 +29,11 @@ export default function Home({
       <DescCard
         img={stackOfBooks}
         header="Book Notes is the little haven that your notes deserve"
-        para="Just focus on your reading, we'll take care of your notes"
+        para="Focus on your reading; we'll take care of your notes"
       />
       <DescCard
         img={libraryBookshelf}
-        header="Just search for your books, then start adding notes"
+        header="Just search for books, then start adding notes"
         para="It's that simple!"
       />
       <h3 className="mt-32 mb-20 text-5xl leading-snug font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-violet-500">
@@ -41,7 +41,7 @@ export default function Home({
       </h3>
       <button
         type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 mb-12 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         onClick={() => navigate("/search")}
       >
         Start Your Collection
