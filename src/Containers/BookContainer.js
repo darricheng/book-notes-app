@@ -29,19 +29,21 @@ export default function BookContainer() {
 
   const deleteBtnProps = {
     className:
-      "absolute top-2 left-8 text-gray-800 hover:bg-red-400 border-2 border-red-700 hover:border-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900",
+      "absolute top-2 left-8 text-gray-800 bg-gray-300 hover:bg-red-400 border-2 border-red-700 hover:border-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900",
     onClick: handleDeleteBook,
   };
 
   return (
     <div className="notes-lib relative">
-      <h1 className="text-4xl font-bold">{book.title}</h1>
-      <h2 className="text-lg font-semibold mb-4">
-        {book.author.reduce((prev, curr, index) => {
-          if (index === 0) return prev + curr;
-          else return prev + ", " + curr;
-        }, "")}
-      </h2>
+      <div className="max-w-4xl text-center mx-auto">
+        <h1 className="text-4xl font-bold">{book.title}</h1>
+        <h2 className="text-lg font-semibold mb-4">
+          {book.author.reduce((prev, curr, index) => {
+            if (index === 0) return prev + curr;
+            else return prev + ", " + curr;
+          }, "")}
+        </h2>
+      </div>
       <DeleteButton {...deleteBtnProps}>Delete Book</DeleteButton>
       <div className="sticky top-48 left-0 -translate-y-24 z-50">
         <button
