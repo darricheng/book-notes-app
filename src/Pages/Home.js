@@ -2,14 +2,13 @@ import DescCard from "../Components/DescCard";
 import SearchBar from "../Components/SearchBar";
 import stackOfBooks from "../img/stack-of-books.jpg";
 import libraryBookshelf from "../img/library-bookshelf.jpg";
-import { useNavigate } from "react-router-dom";
+import StartCollectionBtn from "../Components/StartCollectionBtn";
 
 export default function Home({
   // destructured props
   setSearchText,
   submitSearch,
 }) {
-  const navigate = useNavigate();
   return (
     <div className="p-12" id="home">
       <h1 className="text-7xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500">
@@ -26,26 +25,34 @@ export default function Home({
       <h3 className="mt-40 mb-16 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-sky-400">
         What is Book Notes?
       </h3>
-      <DescCard
-        img={stackOfBooks}
-        header="Book Notes is the little haven that your notes deserve"
-        para="Focus on your reading; we'll take care of your notes"
-      />
-      <DescCard
-        img={libraryBookshelf}
-        header="Just search for books, then start adding notes"
-        para="It's that simple!"
-      />
-      <h3 className="mt-32 mb-20 text-5xl leading-snug font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-violet-500">
-        Join many others happily focusing on their reading
+      <section className="mb-20">
+        <DescCard
+          img={stackOfBooks}
+          header="Book Notes is the little haven that your notes deserve"
+          para="Focus on your reading; we'll take care of your notes"
+        />
+        <DescCard
+          img={libraryBookshelf}
+          header="Just search for books, then start adding notes"
+          para="It's that simple!"
+        />
+      </section>
+      <StartCollectionBtn />
+      <h3 className="mt-8 mb-8 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-yellow-500">
+        How does it work?
       </h3>
-      <button
-        type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 mb-12 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        onClick={() => navigate("/search")}
-      >
-        Start Your Collection
-      </button>
+      <div className="text-left w-1/4 mx-auto text-2xl mb-24 font-medium">
+        <ol className="list-decimal">
+          <li>Search for your favourite books</li>
+          <li>Add books to your collection</li>
+          <li>Add notes with your book highlights</li>
+          <li>Click the Save button</li>
+        </ol>
+      </div>
+      <h3 className="mb-20 text-5xl leading-snug font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-violet-500">
+        Join fellow readers happily focusing on their reading
+      </h3>
+      <StartCollectionBtn />
     </div>
   );
 }
