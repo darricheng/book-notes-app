@@ -42,7 +42,7 @@ export default function Note({ index, isbn }) {
 
   const deleteBtnProps = {
     className:
-      "absolute top-4 left-7 focus:outline-none text-black border-2 hover:bg-gray-200 border-red-700 hover:border-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900",
+      "absolute top-4 left-7 focus:outline-none text-black border-2 hover:bg-red-200 border-red-700 hover:border-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-2 py-1 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900",
     onClick: handleDelete,
   };
 

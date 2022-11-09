@@ -29,7 +29,7 @@ export default function BookContainer() {
 
   const deleteBtnProps = {
     className:
-      "absolute top-2 left-8 text-gray-800 hover:bg-red-400 border-2 border-red-700 hover:border-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900",
+      "absolute top-2 left-8 text-gray-800 hover:bg-red-400 border-2 border-red-700 hover:border-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-600 dark:hover:border-red-700 dark:focus:ring-red-900",
     onClick: handleDeleteBook,
   };
 
@@ -45,7 +45,7 @@ export default function BookContainer() {
       <DeleteButton {...deleteBtnProps}>Delete Book</DeleteButton>
       <div className="sticky top-48 left-0 -translate-y-24 z-50">
         <button
-          className="absolute top-12 right-0 px-6 py-1 border-2 border-blue-500 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 text-xl font-semibold"
+          className="absolute top-12 right-0 px-6 py-1 border-2 border-blue-500 bg-gray-200 hover:bg-gray-300 rounded-lg text-gray-700 text-xl font-semibold"
           onClick={() => dispatch(addNote({ isbn: isbn }))}
         >
           Add New Note
