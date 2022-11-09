@@ -45,7 +45,7 @@ export default function BookContainer() {
       <DeleteButton {...deleteBtnProps}>Delete Book</DeleteButton>
       <div className="sticky top-48 left-0 -translate-y-24 z-50">
         <button
-          className="absolute top-12 right-0 px-6 py-1 border-2 border-blue-500 bg-gray-200 hover:bg-gray-300 rounded-lg text-gray-700 text-xl font-semibold"
+          className="absolute top-12 right-0 px-6 py-1 border-2 border-blue-500 bg-gray-200 hover:bg-gray-300 rounded-lg text-gray-700 text-xl font-semibold shadow-lg"
           onClick={() => dispatch(addNote({ isbn: isbn }))}
         >
           Add New Note

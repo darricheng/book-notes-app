@@ -47,7 +47,7 @@ export default function SidebarLayout() {
       <div className="another-container ml-64 p-12">
         <div className="sticky top-48 left-0 -translate-y-24 z-50">
           <button
-            className="absolute top-0 right-0 px-6 py-1 bg-blue-500 hover:bg-blue-400 rounded-lg text-white text-xl font-semibold"
+            className="absolute top-0 right-0 px-6 py-1 bg-blue-500 hover:bg-blue-400 rounded-lg text-white text-xl font-semibold shadow-lg"
             onClick={() => save()}
           >
             Save Collection
