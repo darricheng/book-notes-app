@@ -41,7 +41,7 @@ export default function Home({
       <h3 className="mt-8 mb-8 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-yellow-500">
         How does it work?
       </h3>
-      <div className="text-left w-1/4 mx-auto text-2xl mb-24 font-medium">
+      <div className="text-left w-1/4 mx-auto text-2xl mb-24 font-medium text-gray-900">
         <ol className="list-decimal">
           <li>Search for your favourite books</li>
           <li>Add books to your collection</li>
