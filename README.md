@@ -31,3 +31,9 @@ The only time the app communicates with external sources is when you perform a s
 ## Dependencies
 
 - [Open Library API](https://openlibrary.org/developers/api)
+
+## Improvement suggestions
+
+- Color scheme of the app can be much improved, such as using a lighter background for the home page.
+- Save Collection button can be sticky on more pages than just when a book is selected, such as `/search` and `/library`.
+- Card design showing book details can place image beside the text instead, so that the card doesn't look so tall.
