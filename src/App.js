@@ -48,7 +48,8 @@ function App() {
           </a>
         </div>
         <p className="text-md">
-          Copyright © 2022 Darric Heng. All Rights Reserved
+          Copyright © 2022-{new Date().getFullYear()} Darric Heng. All Rights
+          Reserved
         </p>
       </footer>
     </div>
